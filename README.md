@@ -40,7 +40,7 @@ Push the server image on the AWS ECR. Make a task definiton for executing new se
 
 Build the frontend and move the build files to S3 for static hosting. 
 (Frontend is provided.)<br>
-Also, frontend files can be made with CI/CD Pipeline using AWS Code Build/Pipeline, which build and deploy on the AWS environment.
+Also, frontend files can be created with CI/CD Pipeline using AWS Code Build/Pipeline, which build and deploy on the AWS environment.
 Finally, deploy on the cloudfront and register record on the Route53. 
 
 
@@ -52,7 +52,7 @@ Finally, deploy on the cloudfront and register record on the Route53.
 
 ![image](https://cdn.discordapp.com/attachments/762718201049251950/1022432411432255488/unknown.png)
 
-> If client access the site with domain that registerd on the Route53, clinet can see the screen of the web application service. When the user use the website, it normally works with server and database according to the API.
+> If client access the site with domain that registerd on the Route53, client can see the screen of the web application service. When the user use the website, it normally works with server and database according to the API.
 
 
 
