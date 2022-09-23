@@ -1,0 +1,42 @@
+version: "3.0"
+
+services:
+  frontend:
+
+    image: sieunn/frontendweb:1.0
+    build : frontend
+    restart: 'always'
+    ports:
+      - target : 80
+        published : 80
+        x-aws-protocol : http
+    depends_on : 
+        - backend
+    container_name: sprint_frontend
+
+  backend:
+    image: sieunn/backendweb:1.0
+    build : backend
+    restart: 'always'
+    ports:
+      - target : 3333
+        published : 3333
+        x-aws-protocol : http
+    environment:
+      MONGODB_ENDPOINT: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: baedal
+    container_name: sprint_backend
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: baedal
+    volumes:
+      - ./mongodb-data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
